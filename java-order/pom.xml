@@ -18,8 +18,7 @@
 	<description>Order management</description>
 
 	<properties>
-		<java.version>11</java.version>
-		<spring.web.version>5.2.0.RELEASE</spring.web.version>
+		<java.version>13</java.version>
 		<lombok.version>1.18.10</lombok.version>
 		<swagger.version>2.9.2</swagger.version>
 		<swagger.annotations.version>1.5.23</swagger.annotations.version>

@@ -25,7 +25,7 @@ docker-compose down
 > Launch PostgreSQL in a Docker container with:
 
 ```sh
-docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order postgres:11.5-alpine
+docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order postgres:12-alpine
 ```
 
 ### Build:
@@ -47,7 +47,7 @@ docker run -it --name order --publish=8091:8091 order:test
 > Launch PostgreSQL in a Docker container with:
 
 ```sh
-docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order postgres:11.5-alpine
+docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order postgres:12-alpine
 ```
 
 ### Build:

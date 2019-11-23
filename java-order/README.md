@@ -53,13 +53,13 @@ docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order postgres:12
 ### Build:
 
 ```sh
-mvn clean install
+mvnw clean install
 ```
 
 ### Run:
 
 ```sh
-mvn spring-boot:run -Dspring-boot.run.profiles=local
+mvnw spring-boot:run -Dspring-boot.run.profiles=local
 ```
 
 ## Access

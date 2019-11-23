@@ -13,16 +13,17 @@ class LineOrder {
     @Id
     val id: UUID = UUID.randomUUID()
 
-    private var product: String? = null
-    private var number: Int? = null
+    var product: String? = null
+    var number: Int? = null
 
     @ManyToOne
     var parentPassedOrder: PassedOrder? = null
 
     constructor()
 
-    constructor(product: String, number: Int) : this() {
+    constructor(product: String, number: Int, parentPassedOrder: PassedOrder) : this() {
         this.product = product
         this.number = number
+        this.parentPassedOrder = parentPassedOrder
     }
 }

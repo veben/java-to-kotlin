@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-@ComponentScan(basePackages= {"com.veben.microservices.order.ext.db"})
+@ComponentScan(basePackages = {"com.veben.microservices.order.ext.db"})
 @Sql(scripts = {"/data/data-local.sql"})
 @ActiveProfiles("local")
 @ContextConfiguration(initializers = AbstractRepositoryTest.Initializer.class)
@@ -25,7 +25,7 @@ abstract class AbstractRepositoryTest {
 
     private static final PostgreSQLContainer postgresqlContainer = new PostgreSQLContainer("postgres:12-alpine");
 
-    public static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+    static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
         @Override
         public void initialize(@NotNull ConfigurableApplicationContext configurableApplicationContext) {

@@ -4,19 +4,18 @@ package com.veben.microservices.order.ext.rest
 import com.veben.microservices.order.domain.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.ArgumentMatchers.anyString
+import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.HttpStatus
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers
-
-import java.time.LocalDateTime.now
-import org.mockito.ArgumentMatchers.anyString
-import org.mockito.Mockito.`when`
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import java.time.LocalDateTime.now
 
 @ExtendWith(SpringExtension::class)
 @WebMvcTest(controllers = [OrderController::class])
@@ -34,7 +33,6 @@ internal class PassedOrderControllerTest {
     private lateinit var mockMvc: MockMvc
 
     @Test
-    @Throws(Exception::class)
     fun should_return_no_content_when_no_order() {
         // given
 
@@ -46,7 +44,6 @@ internal class PassedOrderControllerTest {
     }
 
     @Test
-    @Throws(Exception::class)
     fun should_return_ok_when_order() {
         // given
         val order = PassedOrder(Buyer("jean-michel@gmail.com", "Dupont", "Jean-Michel",
@@ -62,7 +59,6 @@ internal class PassedOrderControllerTest {
     }
 
     @Test
-    @Throws(Exception::class)
     fun should_return_no_content_when_no_line_order() {
         // given
 
@@ -74,11 +70,10 @@ internal class PassedOrderControllerTest {
     }
 
     @Test
-    @Throws(Exception::class)
     fun should_return_ok_when_no_line_order() {
         // given
         val orderId = "id"
-        val lineOrder = LineOrder("Bike", 1)
+        val lineOrder = LineOrder("Bike", 1, PassedOrder())
         `when`(orderService.findLineOrdersForOrder(anyString())).thenReturn(listOf(lineOrder))
 
         // when

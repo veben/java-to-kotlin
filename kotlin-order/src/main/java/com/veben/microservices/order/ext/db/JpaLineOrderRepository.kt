@@ -8,7 +8,7 @@ import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
 
 @Repository
-open class JpaLineOrderRepository : LineOrderRepository {
+class JpaLineOrderRepository : LineOrderRepository {
 
     @PersistenceContext
     private lateinit var entityManager: EntityManager

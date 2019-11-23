@@ -11,10 +11,10 @@ import springfox.documentation.builders.RequestHandlerSelectors.basePackage
 
 @Configuration
 @EnableSwagger2
-open class SwaggerConfig {
+class SwaggerConfig {
 
     @Bean
-    open fun api(): Docket {
+    fun api(): Docket {
         return Docket(DocumentationType.SWAGGER_2)
                 .host("localhost:8091")
                 .select()

@@ -6,12 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 import java.util.UUID
-import kotlin.jvm.JvmDefault as JvmDefault1
+import kotlin.jvm.JvmDefault
 
 @Repository
 interface JpaPassedOrderRepository : PassedOrderRepository, JpaRepository<PassedOrder, UUID> {
 
-    @JvmDefault1
+    @JvmDefault
     override fun findAllPassedOrders(): Set<PassedOrder> {
         return HashSet(findAll())
     }

@@ -16,7 +16,7 @@ services:
     build:
       context: .
       args:
-        - APP_NAME=java-order
+        - APP_NAME=kotlin-order
         - APP_VERSION=0.0.1
     ports:
       - 8091:8091

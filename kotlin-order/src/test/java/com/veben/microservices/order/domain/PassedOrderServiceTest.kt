@@ -39,7 +39,7 @@ internal class PassedOrderServiceTest {
     fun should_find_line_orders_for_order_when_data() {
         // given
         val orderId = "id"
-        val lineOrder = LineOrder("Bike", 1)
+        val lineOrder = LineOrder("Bike", 1, PassedOrder())
         `when`(lineOrderRepository.findLineOrdersForOrder(orderId)).thenReturn(listOf(lineOrder))
 
         // then

@@ -24,6 +24,7 @@
         <swagger.version>2.9.2</swagger.version>
         <swagger.annotations.version>1.5.23</swagger.annotations.version>
         <testcontainer.postgresql.version>1.12.1</testcontainer.postgresql.version>
+        <kotlin.logging.version>1.7.6</kotlin.logging.version>
     </properties>
 
     <dependencies>
@@ -107,10 +108,11 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Log4j2 -->
+        <!-- Kotling logging -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
+            <groupId>io.github.microutils</groupId>
+            <artifactId>kotlin-logging</artifactId>
+            <version>${kotlin.logging.version}</version>
         </dependency>
 
         <!-- Swagger -->

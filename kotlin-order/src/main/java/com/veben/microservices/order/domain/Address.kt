@@ -11,7 +11,7 @@ class Address {
 
     constructor()
 
-    constructor(country: String?, city: String?, street: String?, number: Int?) {
+    constructor(country: String?, city: String?, street: String?, number: Int?): this() {
         this.country = country
         this.city = city
         this.street = street

@@ -17,7 +17,7 @@ class Buyer {
 
     constructor()
 
-    constructor(email: String?, name: String?, surname: String?, address: Address?) {
+    constructor(email: String?, name: String?, surname: String?, address: Address?): this() {
         this.email = email
         this.name = name
         this.surname = surname

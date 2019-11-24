@@ -1,10 +1,9 @@
 package com.veben.microservices.order.domain
 
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
-import org.mockito.Mock
+import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.junit.jupiter.MockitoExtension
 import java.time.LocalDateTime.now
@@ -12,16 +11,14 @@ import java.time.LocalDateTime.now
 @ExtendWith(MockitoExtension::class)
 internal class PassedOrderServiceTest {
 
-    @Mock
-    private lateinit var passedOrderRepository: PassedOrderRepository
-    @Mock
-    private lateinit var lineOrderRepository: LineOrderRepository
+    private val passedOrderRepository = Mockito.mock(PassedOrderRepository::class.java)
+    private val lineOrderRepository = Mockito.mock(LineOrderRepository::class.java)
 
     @InjectMocks
     private lateinit var orderService: OrderService
 
     @Test
-    fun should_find_all_orders_when_data() {
+    fun `should find all orders when data`() {
         // given
         val order = PassedOrder(
                 Buyer("jean-michel@gmail.com", "Dupont", "Jean-Michel",
@@ -32,11 +29,11 @@ internal class PassedOrderServiceTest {
         val actualOrders = orderService.findAllOrders()
 
         // then
-        assertThat(actualOrders).containsExactly(order)
+        assert(actualOrders.contains(order))
     }
 
     @Test
-    fun should_find_line_orders_for_order_when_data() {
+    fun `should find line orders for order when data`() {
         // given
         val orderId = "id"
         val lineOrder = LineOrder("Bike", 1, PassedOrder())
@@ -46,6 +43,6 @@ internal class PassedOrderServiceTest {
         val actualLineOrders = orderService.findLineOrdersForOrder(orderId)
 
         // then
-        assertThat(actualLineOrders).containsExactly(lineOrder)
+        assert(actualLineOrders.contains(lineOrder))
     }
 }

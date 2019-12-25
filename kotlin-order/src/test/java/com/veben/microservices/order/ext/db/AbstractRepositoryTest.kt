@@ -20,10 +20,10 @@ import javax.validation.constraints.NotNull
 abstract class AbstractRepositoryTest {
 
     companion object {
-        private val postgresqlContainer = KPostgreSQLContainer("postgres:12-alpine")
+        private val postgresqlContainer = MyPostgreSQLContainer("postgres:12-alpine")
     }
 
-    class KPostgreSQLContainer(imageName: String) : PostgreSQLContainer<KPostgreSQLContainer>(imageName)
+    class MyPostgreSQLContainer(imageName: String) : PostgreSQLContainer<MyPostgreSQLContainer>(imageName)
 
     class Initializer : ApplicationContextInitializer<ConfigurableApplicationContext> {
 

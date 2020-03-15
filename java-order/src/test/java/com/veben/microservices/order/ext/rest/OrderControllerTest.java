@@ -2,12 +2,10 @@ package com.veben.microservices.order.ext.rest;
 
 import com.veben.microservices.order.domain.*;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
@@ -20,8 +18,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ExtendWith(SpringExtension.class)
-@WebMvcTest(controllers = OrderController.class)
+@WebMvcTest
 class OrderControllerTest {
 
     private static final String ORDER_PATH = "/api/order/v1/orders/";
@@ -33,7 +30,6 @@ class OrderControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-
     @Test
     void should_return_no_content_when_no_order() throws Exception {
         // given
@@ -41,7 +37,7 @@ class OrderControllerTest {
         // when
         mockMvc.perform(get(ORDER_PATH))
                 .andDo(MockMvcResultHandlers.print())
-        // then
+                // then
                 .andExpect(status().is(HttpStatus.NO_CONTENT.value()));
     }
 
@@ -58,7 +54,7 @@ class OrderControllerTest {
         // when
         mockMvc.perform(get(ORDER_PATH))
                 .andDo(MockMvcResultHandlers.print())
-        // then
+                // then
                 .andExpect(status().isOk());
     }
 
@@ -69,7 +65,7 @@ class OrderControllerTest {
         // when
         mockMvc.perform(get(ORDER_PATH + "id" + LINE_ORDERS_FOR_ORDER_URI))
                 .andDo(MockMvcResultHandlers.print())
-        // then
+                // then
                 .andExpect(status().is(HttpStatus.NO_CONTENT.value()));
     }
 

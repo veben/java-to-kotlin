@@ -1,6 +1,7 @@
 package com.veben.microservices.order.ext.db;
 
 import com.veben.microservices.order.domain.Order;
+import com.veben.microservices.order.ext.db.config.AbstractRepositoryTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

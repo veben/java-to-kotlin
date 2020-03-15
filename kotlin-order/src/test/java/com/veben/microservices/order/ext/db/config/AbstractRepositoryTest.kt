@@ -19,21 +19,20 @@ import javax.validation.constraints.NotNull
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 abstract class AbstractRepositoryTest {
 
-    companion object {
-        private val postgresqlContainer = MyPostgreSQLContainer("postgres:12-alpine")
-    }
-
-    class MyPostgreSQLContainer(imageName: String) : PostgreSQLContainer<MyPostgreSQLContainer>(imageName)
-
     class Initializer : ApplicationContextInitializer<ConfigurableApplicationContext> {
 
+        companion object {
+            internal val postgresqlContainer = PostgreSQLContainer<Nothing>("postgres:12-alpine")
+        }
+
         override fun initialize(@NotNull configurableApplicationContext: ConfigurableApplicationContext) {
-            postgresqlContainer
-                    .withDatabaseName("order")
-                    .withUsername(configurableApplicationContext.environment.getProperty("spring.datasource.username"))
-                    .withPassword(configurableApplicationContext.environment.getProperty("spring.datasource.password"))
-                    .start()
-            configurableApplicationContext.environment.systemProperties["spring.datasource.url"] = postgresqlContainer.jdbcUrl
+                postgresqlContainer
+                        .apply {
+                            withDatabaseName("order")
+                            withUsername(configurableApplicationContext.environment.getProperty("spring.datasource.username"))
+                            withPassword(configurableApplicationContext.environment.getProperty("spring.datasource.password"))
+                        }.start()
+                configurableApplicationContext.environment.systemProperties["spring.datasource.url"] = postgresqlContainer.jdbcUrl
         }
     }
 }

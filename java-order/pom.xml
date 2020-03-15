@@ -22,7 +22,7 @@
 		<lombok.version>1.18.10</lombok.version>
 		<swagger.version>2.9.2</swagger.version>
 		<swagger.annotations.version>1.5.23</swagger.annotations.version>
-		<testcontainer.postgresql.version>1.12.1</testcontainer.postgresql.version>
+		<testcontainer.postgresql.version>1.12.5</testcontainer.postgresql.version>
 	</properties>
 
 	<dependencies>

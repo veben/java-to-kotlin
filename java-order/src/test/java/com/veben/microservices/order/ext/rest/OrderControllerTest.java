@@ -44,7 +44,7 @@ class OrderControllerTest {
     @Test
     void should_return_ok_when_order() throws Exception {
         // given
-        var order = new Order(
+        var order = new PassedOrder(
                 new Buyer(
                         "jean-michel@gmail.com", "Dupont", "Jean-Michel",
                         new Address("France", "Paris", "Lombard", 10)),

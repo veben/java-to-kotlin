@@ -1,7 +1,7 @@
 package com.veben.microservices.order.ext.rest;
 
 import com.veben.microservices.order.domain.LineOrder;
-import com.veben.microservices.order.domain.Order;
+import com.veben.microservices.order.domain.PassedOrder;
 import com.veben.microservices.order.domain.OrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,17 +24,17 @@ public class OrderController {
     private final OrderService orderService;
 
     @GetMapping(value = "/orders")
-    @ApiOperation(value = "List orders", response = Order.class, responseContainer = "ResponseEntity")
-    public ResponseEntity<Set<Order>> findAllOrders() {
+    @ApiOperation(value = "List orders", response = PassedOrder.class, responseContainer = "ResponseEntity")
+    public ResponseEntity<Set<PassedOrder>> findAllOrders() {
         log.info("findAllOrders called");
 
-        final Set<Order> orders = orderService.findAllOrders();
+        final Set<PassedOrder> orders = orderService.findAllOrders();
 
         return orders.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(orders);
     }
 
     @GetMapping(value = "/orders/{orderId}/line-orders")
-    @ApiOperation(value = "List lines for an order", response = Order.class, responseContainer = "ResponseEntity")
+    @ApiOperation(value = "List lines for an order", response = PassedOrder.class, responseContainer = "ResponseEntity")
     public ResponseEntity<List<LineOrder>> findLineOrdersForOrder(@PathVariable("orderId") String orderId) {
         log.info("findLineOrdersForOrder called with params: " + orderId);
 

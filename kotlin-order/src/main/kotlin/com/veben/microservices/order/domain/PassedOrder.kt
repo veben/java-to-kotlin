@@ -9,20 +9,10 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "passed_order")
-class PassedOrder {
-
+data class PassedOrder(
     @Id
-    val id: UUID = UUID.randomUUID()
-
+    val id: UUID = UUID.randomUUID(),
     @Embedded
-    var buyer: Buyer? = null
-
+    var buyer: Buyer? = null,
     var date: LocalDateTime? = null
-
-    constructor()
-
-    constructor(buyer: Buyer, date: LocalDateTime) : this() {
-        this.buyer = buyer
-        this.date = date
-    }
-}
+)

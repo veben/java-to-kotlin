@@ -15,7 +15,7 @@ public class OrderService {
     private final LineOrderRepository lineOrderRepository;
 
     @Transactional(readOnly = true)
-    public Set<Order> findAllOrders() {
+    public Set<PassedOrder> findAllOrders() {
         return orderRepository.findAllOrders();
     }
 

@@ -20,7 +20,7 @@ import static lombok.AccessLevel.NONE;
 @ToString
 @Entity
 @Table(name = "passed_order")
-public class Order {
+public class PassedOrder {
 
     @Id
     @Setter(NONE)
@@ -31,11 +31,11 @@ public class Order {
 
     LocalDateTime date;
 
-    protected Order() {
+    protected PassedOrder() {
         this.id = UUID.randomUUID();
     }
 
-    public Order(Buyer buyer, LocalDateTime date) {
+    public PassedOrder(Buyer buyer, LocalDateTime date) {
         this();
         this.buyer = buyer;
         this.date = date;

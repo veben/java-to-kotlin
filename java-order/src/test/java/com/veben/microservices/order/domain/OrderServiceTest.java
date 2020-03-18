@@ -31,7 +31,7 @@ class OrderServiceTest {
     @Test
     void should_find_all_orders_when_data() {
         // given
-        var order = new Order(
+        var order = new PassedOrder(
                 new Buyer(
                         "jean-michel@gmail.com", "Dupont", "Jean-Michel",
                         new Address("France", "Paris", "Lombard", 10)),
@@ -39,7 +39,7 @@ class OrderServiceTest {
         when(orderRepository.findAllOrders()).thenReturn(Set.of(order));
 
         // then
-        Set<Order> actualOrders = orderService.findAllOrders();
+        Set<PassedOrder> actualOrders = orderService.findAllOrders();
 
         // then
         assertThat(actualOrders).containsExactly(order);

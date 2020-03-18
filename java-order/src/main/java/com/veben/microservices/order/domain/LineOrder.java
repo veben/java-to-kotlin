@@ -30,7 +30,7 @@ public class LineOrder {
     private int number;
 
     @ManyToOne
-    private Order parentOrder;
+    private PassedOrder parentOrder;
 
     protected LineOrder() {
         this.id = UUID.randomUUID();

@@ -11,7 +11,7 @@ import java.time.LocalDateTime.now
 @ExtendWith(MockitoExtension::class)
 internal class PassedOrderServiceTest {
 
-    private val passedOrderRepository = Mockito.mock(PassedOrderRepository::class.java)
+    private val passedOrderRepository = Mockito.mock(OrderRepository::class.java)
     private val lineOrderRepository = Mockito.mock(LineOrderRepository::class.java)
 
     @InjectMocks
@@ -23,7 +23,7 @@ internal class PassedOrderServiceTest {
         val order = PassedOrder(
                 Buyer("jean-michel@gmail.com", "Dupont", "Jean-Michel",
                         Address("France", "Paris", "Lombard", 10)), now())
-        `when`(passedOrderRepository.findAllPassedOrders()).thenReturn(setOf(order))
+        `when`(passedOrderRepository.findAllOrders()).thenReturn(setOf(order))
 
         // then
         val actualOrders = orderService.findAllOrders()
@@ -36,7 +36,7 @@ internal class PassedOrderServiceTest {
     fun `should find line orders for order when data`() {
         // given
         val orderId = "id"
-        val lineOrder = LineOrder("Bike", 1, PassedOrder())
+        val lineOrder = LineOrder("Bike", 1)
         `when`(lineOrderRepository.findLineOrdersForOrder(orderId)).thenReturn(listOf(lineOrder))
 
         // then

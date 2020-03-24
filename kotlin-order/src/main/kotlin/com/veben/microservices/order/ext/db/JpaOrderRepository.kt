@@ -1,18 +1,18 @@
 package com.veben.microservices.order.ext.db
 
 import com.veben.microservices.order.domain.PassedOrder
-import com.veben.microservices.order.domain.PassedOrderRepository
+import com.veben.microservices.order.domain.OrderRepository
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
-
-import java.util.UUID
-import kotlin.jvm.JvmDefault
+import java.util.*
+import kotlin.collections.HashSet
+import kotlin.collections.Set
 
 @Repository
-interface JpaPassedOrderRepository : PassedOrderRepository, JpaRepository<PassedOrder, UUID> {
+interface JpaOrderRepository : OrderRepository, JpaRepository<PassedOrder, UUID> {
 
     @JvmDefault
-    override fun findAllPassedOrders(): Set<PassedOrder> {
+    override fun findAllOrders(): Set<PassedOrder> {
         return HashSet(findAll())
     }
 }

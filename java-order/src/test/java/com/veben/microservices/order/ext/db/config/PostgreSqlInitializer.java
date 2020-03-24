@@ -21,7 +21,7 @@ class PostgreSqlInitializer implements ApplicationContextInitializer<Configurabl
     @Override
     public void initialize(@NotNull ConfigurableApplicationContext configurableApplicationContext) {
 
-        log.info("Initilizing postgres containert to perform repository tests");
+        log.info("Initializing postgres container to perform repository tests");
 
         postgresqlContainer
                 .withDatabaseName(DATABASE)

@@ -15,4 +15,9 @@ data class LineOrder(
     var number: Int? = null,
     @ManyToOne
     var parentPassedOrder: PassedOrder? = null
-)
+) {
+    constructor(product: String?, number: Int) : this() {
+        this.product = product
+        this.number = number
+    }
+}

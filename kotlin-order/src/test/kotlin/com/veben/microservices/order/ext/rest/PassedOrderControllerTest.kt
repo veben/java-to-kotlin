@@ -69,7 +69,7 @@ internal class PassedOrderControllerTest {
     fun `should return ok when no line order`() {
         // given
         val orderId = "id"
-        val lineOrder = LineOrder("Bike", 1, PassedOrder())
+        val lineOrder = LineOrder("Bike", 1)
         `when`(orderService.findLineOrdersForOrder(anyString())).thenReturn(listOf(lineOrder))
 
         // when

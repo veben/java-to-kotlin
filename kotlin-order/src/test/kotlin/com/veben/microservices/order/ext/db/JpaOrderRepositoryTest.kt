@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired
 internal class JpaOrderRepositoryTest : AbstractRepositoryTest() {
 
     @Autowired
-    private lateinit var jpaPassedOrderRepository: JpaPassedOrderRepository
+    private lateinit var repository: JpaOrderRepository
 
     @Test
     fun `should find all orders when data`() {
         // given
 
         // when
-        val allOrders = jpaPassedOrderRepository.findAllPassedOrders()
+        val allOrders = repository.findAllOrders()
 
         // then
         assert(allOrders.isNotEmpty())

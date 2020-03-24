@@ -15,4 +15,9 @@ data class PassedOrder(
     @Embedded
     var buyer: Buyer? = null,
     var date: LocalDateTime? = null
-)
+) {
+    constructor(buyer: Buyer, date: LocalDateTime) : this() {
+        this.buyer = buyer
+        this.date = date
+    }
+}

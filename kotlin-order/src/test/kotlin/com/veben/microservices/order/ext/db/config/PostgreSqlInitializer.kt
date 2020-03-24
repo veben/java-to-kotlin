@@ -16,14 +16,14 @@ internal class PostgreSqlInitializer : ApplicationContextInitializer<Configurabl
         private val postgresqlContainer = PostgreSQLContainer<Nothing>(POSTGRES_IMAGE)
     }
 
-    override fun initialize(configurableApplicationContext: ConfigurableApplicationContext?) {
+    override fun initialize(configurableApplicationContext: ConfigurableApplicationContext) {
         postgresqlContainer
                 .apply {
                     withDatabaseName(DATABASE)
-                    withUsername(configurableApplicationContext?.environment?.getProperty(USERNAME_PROPERTY))
-                    withPassword(configurableApplicationContext?.environment?.getProperty(PASSWD_PROPERTY))
+                    withUsername(configurableApplicationContext.environment.getProperty(USERNAME_PROPERTY))
+                    withPassword(configurableApplicationContext.environment.getProperty(PASSWD_PROPERTY))
                 }.start()
 
-        configurableApplicationContext?.environment?.systemProperties?.set(URL_PROPERTY, postgresqlContainer.jdbcUrl)
+        configurableApplicationContext.environment.systemProperties[URL_PROPERTY] = postgresqlContainer.jdbcUrl
     }
 }

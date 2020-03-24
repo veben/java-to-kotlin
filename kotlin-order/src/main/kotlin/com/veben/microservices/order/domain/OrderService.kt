@@ -6,14 +6,14 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional(readOnly = true)
 class OrderService(
-        private var passedOrderRepository: PassedOrderRepository,
+        private var orderRepository: OrderRepository,
         private var lineOrderRepository: LineOrderRepository) {
 
     fun findAllOrders(): Set<PassedOrder> {
-        return passedOrderRepository.findAllPassedOrders()
+        return orderRepository.findAllOrders()
     }
 
-    fun findLineOrdersForOrder(orderId: String): List<LineOrder> {
+    fun findLineOrdersForOrder(orderId: String): List<LineOrder>  {
         return lineOrderRepository.findLineOrdersForOrder(orderId)
     }
 }

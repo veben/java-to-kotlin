@@ -3,6 +3,7 @@ package com.veben.microservices.order;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 @Slf4j
@@ -10,13 +11,22 @@ public class OrderApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(OrderApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(OrderApplication.class, args);
+
+        logStartupInformations(context);
+    }
+
+    private static void logStartupInformations(ConfigurableApplicationContext context) {
+        String protocol = context.getEnvironment().getProperty("application.protocol");
+        String host = context.getEnvironment().getProperty("application.host");
+        String port = context.getEnvironment().getProperty("server.port");
+        String name = context.getEnvironment().getProperty("spring.application.name");
 
         log.info("**********************************************************************");
-        log.info("Order Mircroservice from veben is UP");
-        log.info("Health check is available at http://localhost:8091/actuator/health");
-        log.info("Swagger is available at http://localhost:8091/swagger-ui.html");
-        log.info("Database is available at jdbc:postgresql://localhost:5434/order");
+        log.info("[{}] ℳicroservice from veben is UP", context.getEnvironment().getProperty("spring.application.name"));
+        log.info("Health check is available at {}://{}:{}/actuator/health", protocol, host, port);
+        log.info("Swagger is available at {}://{}:{}/swagger-ui.html", protocol, host, port);
+        log.info("Database is available using jdbc:postgresql://{}:5433/{}", host, name);
         log.info("**********************************************************************");
     }
 }

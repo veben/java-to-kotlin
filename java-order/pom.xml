@@ -10,12 +10,14 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>com.veben.microservices</groupId>
+	<groupId>com.veben</groupId>
 	<artifactId>java-order</artifactId>
 	<version>0.0.1</version>
 
 	<name>Java Order</name>
 	<description>Order management</description>
+
+	<packaging>jar</packaging>
 
 	<properties>
 		<java.version>13</java.version>

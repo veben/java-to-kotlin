@@ -10,12 +10,14 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.veben.microservices</groupId>
+    <groupId>com.veben</groupId>
     <artifactId>kotlin-order</artifactId>
     <version>0.0.1</version>
 
     <name>Kotlin Order</name>
     <description>Order management</description>
+
+    <packaging>jar</packaging>
 
     <properties>
         <java.version>11</java.version>

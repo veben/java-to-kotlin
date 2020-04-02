@@ -10,7 +10,7 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>com.veben</groupId>
+	<groupId>com.veben.javatokotlin</groupId>
 	<artifactId>java-order</artifactId>
 	<version>0.0.1</version>
 

@@ -6,7 +6,7 @@
     <groupId>com.veben</groupId>
     <artifactId>javatokotlin</artifactId>
 
-    <name>java-to-kotlin</name>
+    <name>Java to Kotlin</name>
     <description>From java to kotlin</description>
 
     <packaging>pom</packaging>

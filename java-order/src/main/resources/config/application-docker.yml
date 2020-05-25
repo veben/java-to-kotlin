@@ -2,7 +2,7 @@ database:
   host: order-postgresql
   port: 5432
   username: postgres
-  password:
+  password: pass
 
 spring:
   jpa:

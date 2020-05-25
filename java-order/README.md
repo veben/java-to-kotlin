@@ -12,10 +12,18 @@
 docker-compose up --build -d && docker-compose logs -f
 ```
 
-### Stop:
+### Build & Run (using **Docker BuildKit**)
+
+> Unix version
 
 ```sh
-docker-compose down
+COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up --build -d && docker-compose logs -f
+```
+
+> Windows version
+
+```sh
+set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up --build -d && docker-compose logs -f
 ```
 
 ## Build & Run with Docker
@@ -25,22 +33,30 @@ docker-compose down
 > Launch PostgreSQL in a Docker container with:
 
 ```sh
-docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order postgres:11.5-alpine
+docker run --name order-postgresql -p 5433:5432 -e POSTGRES_DB=order -e POSTGRES_PASSWORD=pass postgres:12-alpine
 ```
 
 ### Build:
 
+> Unix version
+
 ```sh
-docker build --tag order:test --rm=true ..
+DOCKER_BUILDKIT=1 docker build --tag order:test --build-arg APP_NAME=order --build-arg APP_VERSION=0.0.1 --rm=true .
+```
+
+> Windows version
+
+```sh
+set "DOCKER_BUILDKIT=1" & docker build --tag order:test --build-arg APP_NAME=order --build-arg APP_VERSION=0.0.1 --rm=true .
 ```
 
 ### Run:
 
 ```sh
-docker run -it --name order --publish=8091:8091 order:test
+docker run -it --name order --publish=8090:8090 order:test
 ```
 
-## Build & Run with Maven
+## Build & Run with Docker + Maven Wrapper
 
 ### Datasource:
 

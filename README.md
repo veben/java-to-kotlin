@@ -6,12 +6,12 @@
 
 ## 📜 Table of Contents
 
-- [ ] [Tools Setup](#tools-setup)
-- [ ] [Java Order in depth](java-order/README.md)
-- [ ] [Kotlin Order in depth](kotlin-order/README.md)
-- [ ] [Troubleshooting](#troubleshooting)
+1. [Tools Setup](#tools-setup)
+2. [Java Order in depth](java-order/README.md)
+3. [Kotlin Order in depth](kotlin-order/README.md)
+4. [Troubleshooting](#troubleshooting)
 
-## ⚙ Tools Setup
+## 1. ⚙ Tools Setup
 
 #### 🐳 Docker Desktop for Windows
 
@@ -32,7 +32,7 @@
     - TCP socket: checked
     - Engine API URL: `tcp/localhost:2375`
 
-### 🛠 Troubleshooting
+## 4. 🛠 Troubleshooting
 
 Since you two services uses the same ports, they cannot ba launched at the same time.
 The following ports have to not be in use:

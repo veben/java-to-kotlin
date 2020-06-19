@@ -1,6 +1,9 @@
 .mvn/
+build/
 img/
 target/
+gradlew/
+gradlew.bat
 java-order.iml
 docker-compose.yml
 mvnw/

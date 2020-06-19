@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'org.springframework.boot' version "${spring_boot_version}"
+    id 'io.spring.dependency-management' version "${spring_dependency_management_version}"
+    id "io.freefair.lombok" version "${io_freefair_lombok_version}"
+}
+
+group = "${application_group}"
+version = "${application_version}"
+description = 'Java Order'
+sourceCompatibility = JavaVersion.VERSION_14
+
+bootJar {
+    archiveFileName = rootProject.name + '-' + "${application_version}" + '.jar'
+    layered()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-validation"
+    implementation "io.springfox:springfox-swagger2:${springfox_swagger_version}"
+    implementation "io.springfox:springfox-swagger-ui:${springfox_swagger_version}"
+    implementation "io.swagger:swagger-annotations:${swagger_annotation_version}"
+    runtimeOnly "org.postgresql:postgresql:${postgresql_version}"
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation "org.testcontainers:testcontainers:${testcontainers_version}"
+    testImplementation "org.testcontainers:junit-jupiter:${testcontainers_version}"
+    testImplementation "org.testcontainers:postgresql:${testcontainers_version}"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}

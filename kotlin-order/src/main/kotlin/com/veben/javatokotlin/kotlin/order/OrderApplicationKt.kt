@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.ConfigurableApplicationContext
 
 @SpringBootApplication
-class OrderApplication
+class OrderApplicationKt
 
 fun main(args: Array<String>) {
-    val context = SpringApplication.run(OrderApplication::class.java, *args)
+    val context = SpringApplication.run(OrderApplicationKt::class.java, *args)
     logStartupInformations(context)
 }
 
@@ -25,6 +25,6 @@ private fun logStartupInformations(context: ConfigurableApplicationContext) {
     logger.info("[{}] ℳicroservice from veben is UP", context.environment.getProperty("spring.application.name"))
     logger.info("Health check is available at {}://{}:{}/actuator/health", protocol, host, port)
     logger.info("Swagger is available at {}://{}:{}/swagger-ui.html", protocol, host, port)
-    logger.info("Database is available using jdbc:postgresql://{}:5433/{}", host, name)
+    logger.info("Database is available using jdbc:postgresql://{}:5434/{}", host, name)
     logger.info("**********************************************************************")
 }

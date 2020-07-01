@@ -1,0 +1,56 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
+    id 'application'
+    id 'maven-publish'
+    id 'org.springframework.boot' version "${spring_boot_version}"
+    id 'io.spring.dependency-management' version "${spring_dependency_management_version}"
+    id "org.jetbrains.kotlin.plugin.spring" version "${kotlin_version}"
+    id "org.jetbrains.kotlin.jvm" version "${kotlin_version}"
+    id "org.jetbrains.kotlin.plugin.allopen" version "${kotlin_version}"
+}
+
+group = "${application_group}"
+version = "${application_version}"
+description = 'Kotlin Order'
+sourceCompatibility = JavaVersion.VERSION_11
+
+apply plugin: 'application'
+mainClassName = 'com.veben.javatokotlin.kotlin.order.OrderApplicationKt'
+
+bootJar {
+    archiveFileName = rootProject.name + '-' + "${application_version}" + '.jar'
+    layered()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation "org.jetbrains.kotlin:kotlin-reflect"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "io.github.microutils:kotlin-logging:${kotlin_logging_version}"
+    implementation "io.springfox:springfox-swagger2:${springfox_swagger_version}"
+    implementation "io.springfox:springfox-swagger-ui:${springfox_swagger_version}"
+    implementation "io.swagger:swagger-annotations:${swagger_annotation_version}"
+    runtimeOnly "org.postgresql:postgresql:${postgresql_version}"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation "org.testcontainers:testcontainers:${testcontainers_version}"
+    testImplementation "org.testcontainers:junit-jupiter:${testcontainers_version}"
+    testImplementation "org.testcontainers:postgresql:${testcontainers_version}"
+}
+
+tasks.withType(KotlinCompile) {
+    kotlinOptions.jvmTarget = "${kotlin_option_jvmTarget}"
+    kotlinOptions.freeCompilerArgs = ["-Xjsr305=strict", "-Xjvm-default=enable"]
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}

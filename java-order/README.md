@@ -24,7 +24,7 @@ set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up -
 ### Datasource:
 > Launch PostgreSQL in a Docker container with:
 ```sh
-docker run --name order-postgresql -p 5433:5432 -e POSTGRES_DB=order -e POSTGRES_PASSWORD=pass postgres:12-alpine
+docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order -e POSTGRES_PASSWORD=pass postgres:12-alpine
 ```
 
 ### Build:
@@ -47,7 +47,7 @@ docker run -it --name order --publish=8090:8090 order:test
 ### Datasource:
 > Launch PostgreSQL in a Docker container with:
 ```sh
-docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order postgres:11.5-alpine
+docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order -e POSTGRES_PASSWORD=pass postgres:12-alpine
 ```
 
 ### Build:

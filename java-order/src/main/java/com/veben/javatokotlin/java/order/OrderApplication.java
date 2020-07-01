@@ -26,7 +26,7 @@ public class OrderApplication {
         log.info("[{}] ℳicroservice from veben is UP", context.getEnvironment().getProperty("spring.application.name"));
         log.info("Health check is available at {}://{}:{}/actuator/health", protocol, host, port);
         log.info("Swagger is available at {}://{}:{}/swagger-ui.html", protocol, host, port);
-        log.info("Database is available using jdbc:postgresql://{}:5433/{}", host, name);
+        log.info("Database is available using jdbc:postgresql://{}:5434/{}", host, name);
         log.info("**********************************************************************");
     }
 }

@@ -1,7 +1,10 @@
 .mvn/
+build/
 img/
 target/
-kotlin-order.iml
+gradlew/
+gradlew.bat
+java-order.iml
 docker-compose.yml
 mvnw/
 mvnw.cmd

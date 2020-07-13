@@ -1,81 +1,65 @@
 # Kotlin Order Microservice
 
 ## Class Diagram
-
 ![](img/class-diagram.png)
 
 ## Build & Run with Docker Compose
-
 ### Build & Run:
-
 ```sh
 docker-compose up --build -d && docker-compose logs -f
 ```
 
 ### Build & Run (using **Docker BuildKit**)
-
 > Unix version
-
 ```sh
 COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up --build -d && docker-compose logs -f
 ```
 
 > Windows version
-
 ```sh
 set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up --build -d && docker-compose logs -f
 ```
 
 ## Build & Run with Docker
-
 ### Datasource:
-
 > Launch PostgreSQL in a Docker container with:
-
 ```sh
-docker run --name order-postgresql -p 5433:5432 -e POSTGRES_DB=order -e POSTGRES_PASSWORD=pass postgres:12-alpine
+docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order -e POSTGRES_PASSWORD=pass postgres:12-alpine
 ```
 
 ### Build:
-
 > Unix version
-
 ```sh
 DOCKER_BUILDKIT=1 docker build --tag order:test --build-arg APP_NAME=order --build-arg APP_VERSION=0.0.1 --rm=true .
 ```
 
 > Windows version
-
 ```sh
 set "DOCKER_BUILDKIT=1" & docker build --tag order:test --build-arg APP_NAME=order --build-arg APP_VERSION=0.0.1 --rm=true .
 ```
 
 ### Run:
-
 ```sh
 docker run -it --name order --publish=8091:8091 order:test
 ```
 
-## Build & Run with Docker + Maven Wrapper
-
+## Build & Run with Docker + Gradle Wrapper
 ### Datasource:
-
 > Launch PostgreSQL in a Docker container with:
-
 ```sh
-docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order postgres:11.5-alpine
+docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order -e POSTGRES_PASSWORD=pass postgres:12-alpine
 ```
 
 ### Build:
-
 ```sh
-mvnw clean install
+gradlew build
 ```
 
 ### Run:
 
+### Run:
 ```sh
-mvnw spring-boot:run -Dspring-boot.run.profiles=local
+java -jar build\libs\kotlin-order-0.0.1.jar
 ```
 
 ## Access

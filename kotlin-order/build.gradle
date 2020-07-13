@@ -15,8 +15,9 @@ version = "${application_version}"
 description = 'Kotlin Order'
 sourceCompatibility = JavaVersion.VERSION_11
 
+apply plugin: 'kotlin'
 apply plugin: 'application'
-mainClassName = 'com.veben.javatokotlin.kotlin.order.OrderApplicationKt'
+mainClassName = "${main_class_path}"
 
 bootJar {
     archiveFileName = rootProject.name + '-' + "${application_version}" + '.jar'
@@ -51,6 +52,5 @@ tasks.withType(KotlinCompile) {
 }
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }

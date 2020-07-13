@@ -1,15 +1,16 @@
 package com.veben.javatokotlin.kotlin.order
 
+
 import mu.KotlinLogging
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.ConfigurableApplicationContext
 
 @SpringBootApplication
-class OrderApplicationKt
+class OrderApplication
 
 fun main(args: Array<String>) {
-    val context = SpringApplication.run(OrderApplicationKt::class.java, *args)
+    val context = SpringApplication.run(OrderApplication::class.java, *args)
     logStartupInformations(context)
 }
 

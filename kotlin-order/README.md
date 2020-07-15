@@ -68,7 +68,7 @@ java -jar build\libs\kotlin-order-0.0.1.jar
 - Swagger: http://localhost:8091/swagger-ui.html
 - Database: jdbc:postgresql://localhost:5434/order
   - User: postgres
-  - Password:
+  - Password: pass
 
 ## Dataset
 

@@ -1,0 +1,4 @@
+rootProject.name = 'javatokotlin'
+
+include 'java-order'
+include 'kotlin-order'

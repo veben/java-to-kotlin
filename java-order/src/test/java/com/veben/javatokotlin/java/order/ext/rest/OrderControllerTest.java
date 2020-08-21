@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
@@ -31,17 +30,6 @@ class OrderControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void should_return_no_content_when_no_order() throws Exception {
-        // given
-
-        // when
-        mockMvc.perform(get(ORDER_PATH))
-                .andDo(MockMvcResultHandlers.print())
-                // then
-                .andExpect(status().is(HttpStatus.NO_CONTENT.value()));
-    }
-
-    @Test
     void should_return_ok_when_order() throws Exception {
         // given
         var order = new PassedOrder(
@@ -59,18 +47,7 @@ class OrderControllerTest {
     }
 
     @Test
-    void should_return_no_content_when_no_line_order() throws Exception {
-        // given
-
-        // when
-        mockMvc.perform(get(ORDER_PATH + "id" + LINE_ORDERS_FOR_ORDER_URI))
-                .andDo(MockMvcResultHandlers.print())
-                // then
-                .andExpect(status().is(HttpStatus.NO_CONTENT.value()));
-    }
-
-    @Test
-    void should_return_ok_when_no_line_order() throws Exception {
+    void should_return_ok_when_line_order() throws Exception {
         // given
         String orderId = "id";
         var lineOrder = new LineOrder("Bike", 1);

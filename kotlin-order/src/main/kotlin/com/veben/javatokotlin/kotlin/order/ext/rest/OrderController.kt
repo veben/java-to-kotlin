@@ -22,9 +22,7 @@ class OrderController(private var orderService: OrderService) {
     fun findAllOrders(): ResponseEntity<Set<PassedOrder>> {
         logger.info("findAllOrders called")
 
-        val orders = orderService.findAllOrders()
-
-        return if (orders.isEmpty()) ResponseEntity.noContent().build() else ResponseEntity.ok(orders)
+        return ResponseEntity.ok(orderService.findAllOrders())
     }
 
     @GetMapping("/orders/{orderId}/line-orders")
@@ -32,8 +30,6 @@ class OrderController(private var orderService: OrderService) {
     fun findLineOrdersForOrder(@PathVariable("orderId") orderId: String): ResponseEntity<List<LineOrder>> {
         logger.info("findLineOrdersForOrder called with params: $orderId")
 
-        val lineOrders = orderService.findLineOrdersForOrder(orderId)
-
-        return if (lineOrders.isEmpty()) ResponseEntity.noContent().build() else ResponseEntity.ok(lineOrders)
+        return ResponseEntity.ok(orderService.findLineOrdersForOrder(orderId))
     }
 }

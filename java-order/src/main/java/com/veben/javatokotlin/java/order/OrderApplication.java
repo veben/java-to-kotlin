@@ -11,16 +11,16 @@ public class OrderApplication {
 
     public static void main(String[] args) {
 
-        ConfigurableApplicationContext context = SpringApplication.run(OrderApplication.class, args);
+        var context = SpringApplication.run(OrderApplication.class, args);
 
         logStartupInformations(context);
     }
 
     private static void logStartupInformations(ConfigurableApplicationContext context) {
-        String protocol = context.getEnvironment().getProperty("application.protocol");
-        String host = context.getEnvironment().getProperty("application.host");
-        String port = context.getEnvironment().getProperty("server.port");
-        String name = context.getEnvironment().getProperty("spring.application.name");
+        var protocol = context.getEnvironment().getProperty("application.protocol");
+        var host = context.getEnvironment().getProperty("application.host");
+        var port = context.getEnvironment().getProperty("server.port");
+        var name = context.getEnvironment().getProperty("spring.application.name");
 
         log.info("**********************************************************************");
         log.info("[{}] ℳicroservice from veben is UP", context.getEnvironment().getProperty("spring.application.name"));

@@ -1,8 +1,8 @@
 package com.veben.javatokotlin.java.order.ext.rest;
 
 import com.veben.javatokotlin.java.order.domain.LineOrder;
-import com.veben.javatokotlin.java.order.domain.PassedOrder;
 import com.veben.javatokotlin.java.order.domain.OrderService;
+import com.veben.javatokotlin.java.order.domain.PassedOrder;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -28,9 +28,7 @@ public class OrderController {
     public ResponseEntity<Set<PassedOrder>> findAllOrders() {
         log.info("findAllOrders called");
 
-        final Set<PassedOrder> orders = orderService.findAllOrders();
-
-        return orders.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(orders);
+        return ResponseEntity.ok(orderService.findAllOrders());
     }
 
     @GetMapping(value = "/orders/{orderId}/line-orders")
@@ -38,8 +36,6 @@ public class OrderController {
     public ResponseEntity<List<LineOrder>> findLineOrdersForOrder(@PathVariable("orderId") String orderId) {
         log.info("findLineOrdersForOrder called with params: " + orderId);
 
-        final List<LineOrder> lineOrders = orderService.findLineOrdersForOrder(orderId);
-
-        return lineOrders.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(lineOrders);
+        return ResponseEntity.ok(orderService.findLineOrdersForOrder(orderId));
     }
 }

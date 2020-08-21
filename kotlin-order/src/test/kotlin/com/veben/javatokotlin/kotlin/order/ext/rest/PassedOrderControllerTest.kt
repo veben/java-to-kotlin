@@ -2,7 +2,6 @@ package com.veben.javatokotlin.kotlin.order.ext.rest
 
 
 import com.veben.javatokotlin.kotlin.order.domain.*
-import com.veben.javatokotlin.kotlin.order.domain.OrderService
 import org.junit.jupiter.api.Test
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mockito.`when`
@@ -30,17 +29,6 @@ internal class PassedOrderControllerTest {
     private lateinit var mockMvc: MockMvc
 
     @Test
-    fun `should return no content when no order`() {
-        // given
-
-        // when
-        mockMvc.perform(get(ORDER_PATH))
-                .andDo(MockMvcResultHandlers.print())
-                // then
-                .andExpect(status().isNoContent)
-    }
-
-    @Test
     fun `should return ok when order`() {
         // given
         val order = PassedOrder(Buyer("jean-michel@gmail.com", "Dupont", "Jean-Michel",
@@ -56,18 +44,7 @@ internal class PassedOrderControllerTest {
     }
 
     @Test
-    fun `should return no content when no line order`() {
-        // given
-
-        // when
-        mockMvc.perform(get(ORDER_PATH + "id" + LINE_ORDERS_FOR_ORDER_URI))
-                .andDo(MockMvcResultHandlers.print())
-                // then
-                .andExpect(status().isNoContent)
-    }
-
-    @Test
-    fun `should return ok when no line order`() {
+    fun `should return ok when line order`() {
         // given
         val orderId = "id"
         val lineOrder = LineOrder("Bike", 1)

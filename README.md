@@ -25,7 +25,7 @@
 
 - Docker settings
   - Shared drives **C**
-  - Expose deamon on **tcp://localhost:2375**
+  - Expose daemon on **tcp://localhost:2375**
 - Intellij settings (Optional) `Build, Execution, Deployment" > "Docker`
   - Change configuration:
     - Name: Docker
